@@ -3,7 +3,7 @@
 ## Mac
 
 ```
-curl -fsSL https://raw.githubusercontent.com/mtjune/env_setup/master/mac/setup.sh | sudo sh
+curl -fsSL https://raw.githubusercontent.com/mtjune/env_setup/master/setup_mac.sh | sudo sh
 ```
 
 ## CentOS
