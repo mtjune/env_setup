@@ -4,33 +4,31 @@
 
 echo "### Common Section ###"
 
-if type git > /dev/null 2>&1 then
+command_eval(){
 
-  # anyenv
-  echo "Install anyenv"
-  if yes | git clone https://github.com/riywo/anyenv ~/.anyenv; then
+  if yes | eval echo ${1}; then
     echo " - Successed !"
   else
     echo " - Failed !"
   fi
+}
+
+
+if type git > /dev/null 2>&1 then
+
+  # anyenv
+  echo "Install anyenv"
+  command_eval "git clone https://github.com/riywo/anyenv ~/.anyenv"
 
   mkdir -p ~/.anyenv/plugins
 
   # anyenv-update
   echo "Install anyenv-update"
-  if yes | git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update; then
-    echo " - Successed !"
-  else
-    echo " - Failed !"
-  fi
+  command_eval "git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update"
 
   # anyenv-git
   echo "Install anyenv-git"
-  if yes | git clone https://github.com/znz/anyenv-git.git ~/.anyenv/plugins/anyenv-git; then
-    echo " - Successed !"
-  else
-    echo " - Failed !"
-  fi
+  command_eval "git clone https://github.com/znz/anyenv-git.git ~/.anyenv/plugins/anyenv-git"
 fi
 
 
