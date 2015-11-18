@@ -19,9 +19,15 @@ command_eval(){
 # Macか確認
 if ! [ "$UNAME" = "Darwin" ]; then
   # Mac OS X
-  echo "Not Mac !!!!!"
+  echo "Not Mac!!!!!"
   exit 1
 fi
+
+
+xcode-select --install
+
+
+
 
 # Homebrewインストール
 if type brew > /dev/null 2>&1 then
