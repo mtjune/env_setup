@@ -2,13 +2,13 @@
 
 cd /tmp
 
-if type "curl" || type "wget"; then
+if type "curl" >/dev/null 2>&1 || type "wget" >/dev/null 2>&1; then
   tarball="https://github.com/mtjune/dotfiles/archive/master.tar.gz"
 
-  if type "curl"; then
+  if type "curl" >/dev/null 2>&1; then
     curl -L "$tarball"
 
-  elif type "wget"; then
+  elif type "wget" >/dev/null 2>&1; then
     wget -O - "$tarball"
 
   fi | tar xv -

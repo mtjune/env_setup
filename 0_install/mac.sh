@@ -13,7 +13,10 @@ command_eval(){
 xcode-select --install
 
 # Homebrewインストール
-if ! type brew; then
+if type brew >/dev/null 2>&1; then
+  echo "homebrew found!"
+
+else
   echo "homebrew not found"
   echo "Install homebrew"
   if yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
@@ -21,9 +24,6 @@ if ! type brew; then
   else
     echo " - Failed !"
   fi
-
-else
-  echo "homebrew found !"
 fi
 
 

@@ -10,7 +10,7 @@ command_eval(){
 }
 
 
-if type git; then
+if type git >/dev/null 2>&1; then
 
   # anyenv
   echo "Install anyenv"
