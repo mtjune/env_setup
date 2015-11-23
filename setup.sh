@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /tmp/
+cd /tmp
 
 if type "curl" || type "wget"; then
   tarball="https://github.com/mtjune/dotfiles/archive/master.tar.gz"
@@ -14,9 +14,10 @@ if type "curl" || type "wget"; then
   fi | tar xv -
 
 else
-    die "curl or wget required"
+    echo "curl or wget required"
+    exit 1
 fi
 
-cd /tmp/env_setup-master/
+cd /tmp/env_setup-master
 
 source setup_local.sh

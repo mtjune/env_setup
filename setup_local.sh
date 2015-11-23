@@ -4,11 +4,11 @@
 if [ "$(uname)" == 'Darwin' ]; then
   OS='mac'
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-  if type dnf > /dev/null 2>&; then
+  if type dnf; then
     OS='redhat'
-  elif type yum > /dev/null 2>&1; then
+  elif type yum; then
     OS='redhat_yum'
-  elif type apt-get > /dev/null 2>&1; then
+  elif type apt-get; then
     OS='debian'
 else
   echo "Your platform ($(uname -a)) is not supported."
@@ -37,10 +37,12 @@ source echo "1_dotfiles/common.sh"
 
 # TeX Section
 echo "### TeX Section ###"
-
-
-
-
-exec -l $SHELL
+if $OS == "mac"; then
+  source echo "2_tex/mac.sh"
+else
+  echo "tex setup only mac"
+fi
 
 echo "### Complete! ###"
+
+exec -l $SHELL
