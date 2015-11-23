@@ -2,16 +2,16 @@
 
 cd /tmp/
 
-if has "curl" || has "wget"; then
-    tarball="https://github.com/mtjune/dotfiles/archive/master.tar.gz"
+if type "curl" || type "wget"; then
+  tarball="https://github.com/mtjune/dotfiles/archive/master.tar.gz"
 
-    if has "curl"; then
-        curl -L "$tarball"
+  if type "curl"; then
+    curl -L "$tarball"
 
-    elif has "wget"; then
-        wget -O - "$tarball"
+  elif type "wget"; then
+    wget -O - "$tarball"
 
-    fi | tar xv -
+  fi | tar xv -
 
 else
     die "curl or wget required"
