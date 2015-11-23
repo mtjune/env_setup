@@ -1,10 +1,6 @@
 #!/bin/sh
 
 
-
-# install section
-echo "### Installation Section ###"
-
 command_eval(){
   if yes | eval echo ${1}; then
     echo " - Successed !"
@@ -14,23 +10,10 @@ command_eval(){
 }
 
 
-
-
-# Macか確認
-if ! [ "$UNAME" = "Darwin" ]; then
-  # Mac OS X
-  echo "Not Mac!!!!!"
-  exit 1
-fi
-
-
 xcode-select --install
 
-
-
-
 # Homebrewインストール
-if type brew > /dev/null 2>&1 then
+if ! type brew; then
   echo "homebrew not found"
   echo "Install homebrew"
   if yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
@@ -67,11 +50,3 @@ for app in ${BREW_CASKS[@]}
 do
 	command_eval "brew cask install $app"
 done
-
-
-./setup_common.sh
-
-
-exec -l $SHELL
-
-echo "### Completed ! ###"

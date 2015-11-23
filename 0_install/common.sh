@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# 基本的にはGitが必要な環境設定
-
-echo "### Common Section ###"
-
 command_eval(){
 
   if yes | eval echo ${1}; then
@@ -14,7 +10,7 @@ command_eval(){
 }
 
 
-if type git > /dev/null 2>&1 then
+if type git; then
 
   # anyenv
   echo "Install anyenv"
@@ -29,16 +25,4 @@ if type git > /dev/null 2>&1 then
   # anyenv-git
   echo "Install anyenv-git"
   command_eval "git clone https://github.com/znz/anyenv-git.git ~/.anyenv/plugins/anyenv-git"
-fi
-
-
-
-echo "### Dotfiles Section ###"
-
-if type git > /dev/null 2>&1 then
-  if yes | git clone https://github.com/mtjune/dotfiles ~/.dotfiles; then
-    cd ~/.dotfiles
-    script/setup.sh
-
-  fi
 fi
