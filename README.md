@@ -39,3 +39,10 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/mtjune/env_setup/ma
 * qlstephen
 * betterzipql
 * quicklook-json
+
+
+# TODO
+
+* フォント関係
+* 行うセクションの選択
+* BrewfileかBrionacに対応
