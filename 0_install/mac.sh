@@ -48,5 +48,5 @@ PATH = /usr/local/bin:$PATH
 BREW_CASKS=(iterm2 atom alfred xquartz google-chrome google-japanese-ime skim karabiner qlmarkdown qlcolorcode qlstephen betterzipql quicklook-json)
 for app in ${BREW_CASKS[@]}
 do
-	command_eval "brew cask install $app"
+	command_eval "brew cask install --appdir=/Applications $app"
 done
