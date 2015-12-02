@@ -28,7 +28,7 @@ fi
 
 
 # git tmux vim emacs brew-caskをインストール
-BREWS=(git tmux vim emacs caskroom/cask/brew-cask)
+BREWS=("git" "tmux" "--with-lua vim" "--with-cocoa emacs" "caskroom/cask/brew-cask" "openssl")
 for app in ${BREWS[@]}
 do
 	command_eval "brew install $app"
