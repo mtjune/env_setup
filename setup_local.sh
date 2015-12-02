@@ -36,12 +36,12 @@ source echo "1_dotfiles/common.sh"
 
 
 # TeX Section
-echo "### TeX Section ###"
-if $OS == "mac"; then
-  source echo "2_tex/mac.sh"
-else
-  echo "tex setup only mac"
-fi
+# echo "### TeX Section ###"
+# if $OS == "mac"; then
+#   source echo "2_tex/mac.sh"
+# else
+#   echo "tex setup only mac"
+# fi
 
 echo "### Complete! ###"
 
