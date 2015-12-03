@@ -10,6 +10,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS='redhat_yum'
   elif type apt-get; then
     OS='debian'
+  fi
 else
   echo "Your platform ($(uname -a)) is not supported."
   exit 1
