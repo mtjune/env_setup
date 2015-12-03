@@ -20,20 +20,20 @@ fi
 
 
 # スクリプトが置いてある場所に移動
-cd `dirname $0`
+cd `dirname $0` && echo "move $0"
 
 
 # Install Section
 echo "### Install Section ###"
 
-source echo "0_install/${OS}.sh"
-source echo "0_install/common.sh"
+source `0_install/${OS}.sh`
+source `0_install/common.sh`
 
 
 # Dotfiles Section
 echo "### Dotfiles Section ###"
 
-source echo "1_dotfiles/common.sh"
+source `1_dotfiles/common.sh`
 
 
 # TeX Section
@@ -48,4 +48,4 @@ echo "### Complete! ###"
 
 exec -l $SHELL
 
-exit(0)
+exit 0
