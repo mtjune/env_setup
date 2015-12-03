@@ -3,7 +3,7 @@
 cd /tmp
 
 if type "curl" >/dev/null 2>&1 || type "wget" >/dev/null 2>&1; then
-  tarball="https://github.com/mtjune/dotfiles/archive/master.tar.gz"
+  tarball="https://github.com/mtjune/env_setup/archive/master.tar.gz"
 
   if type "curl" >/dev/null 2>&1; then
     curl -L "$tarball"
