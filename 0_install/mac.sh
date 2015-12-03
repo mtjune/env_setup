@@ -2,7 +2,7 @@
 
 
 command_eval(){
-  if yes | eval echo ${1}; then
+  if yes | eval `${1}`; then
     echo " - Successed !"
   else
     echo " - Failed !"
@@ -31,22 +31,22 @@ fi
 BREWS=("git" "tmux" "--with-lua vim" "--with-cocoa emacs" "caskroom/cask/brew-cask" "openssl")
 for app in ${BREWS[@]}
 do
-	command_eval "brew install $app"
+	command_eval "sudo brew install $app"
 done
 
 # zshをインストール，設定
-command_eval "brew install --disable-etcdir zsh"
-echo "/usr/local/bin/zsh" >> /etc/shells
-chsh -s /usr/local/bin/zsh
+command_eval "sudo brew install --disable-etcdir zsh"
+sudo echo "/usr/local/bin/zsh" >> /etc/shells
+sudo chsh -s /usr/local/bin/zsh
 
 
 # brew-caskを使う前にPATH更新
-PATH = /usr/local/bin:$PATH
+PATH=/usr/local/bin:$PATH
 
 
 # caskのやつ色々インストール
 BREW_CASKS=(iterm2 atom alfred xquartz google-chrome google-japanese-ime skim karabiner qlmarkdown qlcolorcode qlstephen betterzipql quicklook-json)
 for app in ${BREW_CASKS[@]}
 do
-	command_eval "brew cask install --appdir=/Applications $app"
+	command_eval "sudo brew cask install --appdir=/Applications $app"
 done

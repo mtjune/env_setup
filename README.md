@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/mtjune/env_setup/master/setup.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mtjune/env_setup/master/setup.sh)"
 ```
 
 

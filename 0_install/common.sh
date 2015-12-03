@@ -2,7 +2,7 @@
 
 command_eval(){
 
-  if yes | eval echo ${1}; then
+  if yes | eval `${1}`; then
     echo " - Successed !"
   else
     echo " - Failed !"
