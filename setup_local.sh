@@ -46,3 +46,5 @@ source echo "1_dotfiles/common.sh"
 echo "### Complete! ###"
 
 exec -l $SHELL
+
+exit(0)
