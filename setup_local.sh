@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # OS判別
 if [ "$(uname)" == 'Darwin' ]; then

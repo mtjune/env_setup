@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "### Dotfiles Section ###"
 
 if type git >/dev/null 2>&1; then
