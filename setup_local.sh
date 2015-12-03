@@ -20,7 +20,7 @@ fi
 
 
 # スクリプトが置いてある場所に移動
-cd `dirname $0` && echo "move $0"
+cd `dirname $0` && echo "move"
 
 
 # Install Section
