@@ -26,7 +26,7 @@ cd `dirname $0` && echo "move"
 # Install Section
 echo "### Install Section ###"
 
-source `0_install/${OS}.sh`
+echo "$(source `0_install/${OS}.sh`)"
 # source `0_install/common.sh`
 
 
