@@ -27,13 +27,13 @@ cd `dirname $0` && echo "move"
 echo "### Install Section ###"
 
 source `0_install/${OS}.sh`
-# source `0_install/common.sh`
+source `0_install/common.sh`
 
 
 # Dotfiles Section
 echo "### Dotfiles Section ###"
-#
-# source `1_dotfiles/common.sh`
+
+source `1_dotfiles/common.sh`
 
 
 # TeX Section

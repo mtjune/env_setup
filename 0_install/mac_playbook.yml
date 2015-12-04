@@ -1,0 +1,116 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  sudo: no
+  vars:
+    homebrew_taps:
+      - caskroom/cask
+      # - sanemat/font
+    homebrew_packages:
+      - { name: openssl }
+      - { name: openssl, state: linked, install_options: force }
+      - { name: ansible }
+      - { name: git }
+      - { name: zsh, install_options: disable-etcdir }
+      - { name: wget }
+      - { name: curl }
+      - { name: cmake }
+      - { name: tree }
+      - { name: nkf }
+      - { name: imagemagick }
+      - { name: vim, install_options: with-lua}
+      - { name: emacs, install_options: with-cocoa}
+      - { name: tmux }
+      - { name: reattach-to-user-namespace }
+      - { name: graphviz }
+    homebrew_cask_packages:
+      - { name: iterm2 }
+      - { name: alfred }
+      - { name: skim }
+      - { name: google-chrome }
+      - { name: google-japanese-ime }
+      - { name: karabiner }
+      - { name: xquartz }
+      - { name: qlmarkdown }
+      - { name: qlcolorcode }
+      - { name: qlstephen }
+      - { name: betterzipql }
+      - { name: quicklook-json}
+      - { name: atom }
+    atom_packages:
+      - atom-beautify
+      - autocomplete-paths
+      - autocomplete-plus
+      - autocomplete-python
+      - autocomplete-snippets
+      - chary-tree-view
+      - color-picker
+      - file-icons
+      - highlight-selected
+      - language-lisp
+      - language-python
+      - linter
+      - linter-ruby
+      - maege-conflicts
+      - minimap
+      - minimap-highlight-selected
+      - minimap-pigments
+      - pigments
+      - vim-mode
+
+  tasks:
+    - name: homebrew の tap リポジトリを追加
+      homebrew_tap: tap={{ item }} state=present
+      with_items: homebrew_taps
+
+    - name: homebrew をアップデート
+      homebrew: update_homebrew=yes
+
+    # brew
+    - name: brew パッケージをインストール
+      homebrew: >
+        name={{ item.name }}
+        state={{ item.state | default('latest') }}
+        install_options={{
+          item.install_options | default() | join(',')
+          if item.install_options is not string
+          else item.install_options
+        }}
+      with_items: homebrew_packages
+      register: brew_result
+    - name: brew パッケージの情報保存先ディレクトリを作成
+      file: path=brew_info state=directory
+    - name: brew パッケージの情報を保存
+      shell: brew info {{ item }} > brew_info/{{ item }}
+      with_items: brew_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+
+    # cask
+    - name: homebrew-cask のインストール
+      homebrew: name=brew-cask state=latest
+    - name: cask パッケージをインストール
+      homebrew_cask: name={{ item.name }} state={{ item.state|default('installed') }}
+      with_items: homebrew_cask_packages
+      register: cask_result
+    - name: cask パッケージの情報保存先ディレクトリを作成
+      file: path=cask_info state=directory
+    - name: cask パッケージの情報を保存
+      shell: brew cask info {{ item }} > cask_info/{{ item }}
+      with_items: cask_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+
+
+    # Ricty
+    # - name: xquartz のインストール (for Ricty)
+    #   homebrew_cask: name=xquartz
+    # - name: fontforge のインストール (for Ricty)
+    #   homebrew: name=fontforge
+    # - name: Ricty のインストール
+    #   homebrew: name=ricty
+    # - name: 生成されたフォントファイルをコピー
+    #   shell: cp -f $(brew --cellar ricty)/*/share/fonts/Ricty*.ttf ~/Library/Fonts/
+    #   args:
+    #     creates: ~/Library/Fonts/Ricty-Bold.ttf
+    #   notify: run fc-cache
+
+  handlers:
+    - name: run fc-cache
+      shell: fc-cache -vf
