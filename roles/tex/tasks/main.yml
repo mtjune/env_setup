@@ -1,5 +1,5 @@
 - name: BasicTeXインストール
-  homebrew_cask: name=basictex state=latest
+  homebrew_cask: name=basictex
 - name: tlmgr アップデート
   shell: tlmgr update --self --all
 - name: 日本語インストール
