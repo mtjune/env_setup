@@ -12,6 +12,7 @@ homebrew_packages:
   - { name: cmake }
   - { name: tree }
   - { name: nkf }
+  - { name: ghostscript }
   - { name: imagemagick }
   - { name: vim, install_options: with-lua}
   - { name: emacs, install_options: with-cocoa}

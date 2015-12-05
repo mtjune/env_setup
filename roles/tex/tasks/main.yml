@@ -2,15 +2,21 @@
   homebrew_cask: name=basictex
 - name: tlmgr アップデート
   shell: tlmgr update --self --all
+  sudo: yes
 - name: 日本語インストール
-  shell: tlmgr install collection-langjapanese
-- name: なんか実行
-  shell: perl cjk-gs-integrate.pl --link-texmf --force
-  args:
-    chdir: /usr/local/texlive/2015/texmf-dist/scripts/cjk-gs-integrate
-- name: おまじない
-  shell: mktexlsr
-- name: ヒラギノその1
-  shell: updmap-sys --setoption kanjiEmbed hiragino-elcapitan
-- name: ヒラギノその2
-  shell: updmap-sys --setoption kanjiEmbed hiragino-elcapitan-pron
+  shell: tlmgr install collection-langjapanese latexmk
+  sudo: yes
+# - name: なんか実行
+#   shell: perl cjk-gs-integrate.pl --link-texmf --force
+#   sudo: yes
+#   args:
+#     chdir: /usr/local/texlive/2015/texmf-dist/scripts/cjk-gs-integrate
+# - name: おまじない
+#   shell: mktexlsr
+#   sudo: yes
+# - name: ヒラギノその1
+#   shell: updmap-sys --setoption kanjiEmbed hiragino-elcapitan
+#   sudo: yes
+# - name: ヒラギノその2
+#   shell: updmap-sys --setoption kanjiEmbed hiragino-elcapitan-pron
+#   sudo: yes

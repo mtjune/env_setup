@@ -3,4 +3,5 @@
   gather_facts: no
   sudo: no
   roles:
+    - homebrew
     - tex
