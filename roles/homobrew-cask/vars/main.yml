@@ -1,0 +1,14 @@
+homebrew_cask_packages:
+  - { name: iterm2 }
+  - { name: alfred }
+  - { name: skim }
+  - { name: google-chrome }
+  - { name: google-japanese-ime }
+  - { name: karabiner }
+  - { name: xquartz }
+  - { name: qlmarkdown }
+  - { name: qlcolorcode }
+  - { name: qlstephen }
+  - { name: betterzipql }
+  - { name: quicklook-json}
+  - { name: atom }

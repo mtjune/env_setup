@@ -1,0 +1,21 @@
+homebrew_taps:
+  - caskroom/cask
+
+homebrew_packages:
+  - { name: openssl }
+  - { name: openssl, state: linked, install_options: force }
+  - { name: ansible }
+  - { name: git }
+  - { name: zsh, install_options: disable-etcdir }
+  - { name: wget }
+  - { name: curl }
+  - { name: cmake }
+  - { name: tree }
+  - { name: nkf }
+  - { name: imagemagick }
+  - { name: vim, install_options: with-lua}
+  - { name: emacs, install_options: with-cocoa}
+  - { name: tmux }
+  - { name: reattach-to-user-namespace }
+  - { name: graphviz }
+  - { name: readline }

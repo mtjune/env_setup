@@ -1,0 +1,16 @@
+- name: BasicTeXインストール
+  homebrew_cask: name=basictex state=latest
+- name: tlmgr アップデート
+  shell: tlmgr update --self --all
+- name: 日本語インストール
+  shell: tlmgr install collection-langjapanese
+- name: なんか実行
+  shell: perl cjk-gs-integrate.pl --link-texmf --force
+  args:
+    chdir: /usr/local/texlive/2015/texmf-dist/scripts/cjk-gs-integrate
+- name: おまじない
+  shell: mktexlsr
+- name: ヒラギノその1
+  shell: updmap-sys --setoption kanjiEmbed hiragino-elcapitan
+- name: ヒラギノその2
+  shell: updmap-sys --setoption kanjiEmbed hiragino-elcapitan-pron
