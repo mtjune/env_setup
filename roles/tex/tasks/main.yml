@@ -1,14 +1,18 @@
 ---
 - name: BasicTeXインストール
   homebrew_cask: name=basictex
-- name: texbinにパスを通す
-  shell: export PATH=/Library/texbin:$PATH
+# - name: texbinにパスを通す
+#   shell: export PATH=/Library/texbin:$PATH
 - name: tlmgr アップデート
   shell: tlmgr update --self --all
   become: yes
+  environment:
+    PATH: "/Library/texbin:{{ ansible_env.PATH }}"
 - name: 日本語インストール
   shell: tlmgr install collection-langjapanese latexmk
   become: yes
+  environment:
+    PATH: "/Library/texbin:{{ ansible_env.PATH }}"
 # - name: なんか実行
 #   shell: perl cjk-gs-integrate.pl --link-texmf --force
 #   sudo: yes
