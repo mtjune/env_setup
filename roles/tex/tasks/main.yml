@@ -2,10 +2,12 @@
   homebrew_cask: name=basictex
 - name: tlmgr アップデート
   shell: tlmgr update --self --all
-  sudo: yes
+  became: yes
+- name: texbinにパスを通す
+  shell: export PATH=/Library/texbin:$PATH
 - name: 日本語インストール
   shell: tlmgr install collection-langjapanese latexmk
-  sudo: yes
+  became: yes
 # - name: なんか実行
 #   shell: perl cjk-gs-integrate.pl --link-texmf --force
 #   sudo: yes
