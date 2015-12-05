@@ -1,11 +1,11 @@
 ---
 - name: BasicTeXインストール
   homebrew_cask: name=basictex
+- name: texbinにパスを通す
+  shell: export PATH=/Library/texbin:$PATH
 - name: tlmgr アップデート
   shell: tlmgr update --self --all
   become: yes
-- name: texbinにパスを通す
-  shell: export PATH=/Library/texbin:$PATH
 - name: 日本語インストール
   shell: tlmgr install collection-langjapanese latexmk
   become: yes
