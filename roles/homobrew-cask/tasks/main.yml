@@ -1,3 +1,5 @@
+---
+
 - name: homebrew の tap リポジトリを追加
   homebrew_tap: tap=caskroom/cask state=present
 - name: homebrew-cask のインストール
