@@ -1,0 +1,12 @@
+---
+
+- name: homebrew の tap リポジトリを追加
+  homebrew_tap: tap=caskroom/fonts state=present
+
+- name: homebrew をアップデート
+  homebrew: update_homebrew=yes
+
+- name: cask パッケージをインストール
+  homebrew_cask: name={{ item }} state={{ item.state|default('installed') }}
+  with_items: font_packages
+  sudo: yes

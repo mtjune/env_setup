@@ -1,0 +1,24 @@
+---
+- hosts: '{{ hosts }}'
+  connection: local
+  gather_facts: no
+  become: no
+  vars:
+    apt_packages:
+      - { name: build-essential }
+      - { name: libbz2-dev }
+  tasks:
+    - name: aptパッケージ更新
+      apt: update_cache=yes
+    - name: aptパッケージアップグレード
+      apt: upgrade=full
+    - name: aptパッケージをインストール
+      apt: pkg={{ item.name }} force=yes update_cache=yes
+      with_items: apt_packages
+
+    # - name: ランレベルを変更
+    #   become: yes
+    #   shell: systemctl set-default -f multi-user.target
+
+    # - name: 鍵の設定
+    #   authorized_key: user=mtjune key="{{ lookup('file', '/yukicch/.ssh/id_rsa.pub')}}"

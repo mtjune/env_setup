@@ -8,8 +8,8 @@
   become: yes
   environment:
     PATH: "/Library/TeX/texbin:{{ ansible_env.PATH }}"
-- name: 日本語インストール
-  shell: tlmgr install collection-langjapanese latexmk
+- name: TeXパッケージインストール
+  shell: tlmgr install collection-langjapanese latexmk ptex ptex2pdf jfontmaps jsclasses japanese-otf
   become: yes
   environment:
     PATH: "/Library/TeX/texbin:{{ ansible_env.PATH }}"
